@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend-docker-info-api
+    container_name: backend
+    ports:
+      - "5000:5000"
+    networks:
+      - appnet
+
+  project1:
+    build: ./project1-csc424-home
+    container_name: project1
+    networks:
+      - appnet
+
+  project2:
+    build: ./project2-docker-info
+    container_name: project2
+    networks:
+      - appnet
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - backend
+      - project1
+      - project2
+    networks:
+      - appnet
+
+networks:
+  appnet:
+
