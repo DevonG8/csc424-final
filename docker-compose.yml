@@ -11,12 +11,16 @@ services:
 
   project1:
     build: ./project1-csc424-home
+    ports:
+      - "8081:80"
     container_name: project1
     networks:
       - appnet
 
   project2:
     build: ./project2-docker-info
+    ports:
+      - "8082:80"
     container_name: project2
     networks:
       - appnet
