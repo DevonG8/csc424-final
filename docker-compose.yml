@@ -5,14 +5,14 @@ services:
     build: ./backend-docker-info-api
     container_name: backend
     ports:
-      - "5000:5000"
+      - "3001:3001"
     networks:
       - appnet
 
   project1:
     build: ./project1-csc424-home
     ports:
-      - "8081:80"
+      - "5173:5173"
     container_name: project1
     networks:
       - appnet
@@ -20,7 +20,7 @@ services:
   project2:
     build: ./project2-docker-info
     ports:
-      - "8082:80"
+      - "5174:5174"
     container_name: project2
     networks:
       - appnet
